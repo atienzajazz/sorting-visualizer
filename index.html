@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="header-container">
+        <img src="./images/logo.png" alt="Sorting Visualizer Logo">
+        <div class="header-name">Sorting Visualizer</div>
+    </header>
+    <nav class="main-nav">
+        <button onclick="generatearray()">
+            Generate Array
+        </button>
+        <button onclick="Sort();" id="sorting-button">
+            Sort
+        </button>
+        <div class="sorting-categories-parent">
+            <div class="select">
+                <select name="sorting-categories" id="sorting-categories">
+                    <option value="bubble-sort" selected="selected">Bubble Sort</option>
+                    <option value="heap-sort">Heap Sort</option>
+                    <option value="insertion-sort">Insertion Sort</option>
+                    <option value="merge-sort">Merge Sort</option>
+                    <option value="selection-sort">Selection Sort</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div id="array" />
+    </main>
+    <script src="script.js"></script>
+</body>
+<!-- https://www.geeksforgeeks.org/bubble-sort-visualization-using-javascript/ -->
+
+</html>
