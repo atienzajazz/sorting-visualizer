@@ -1,3 +1,4 @@
+
 function getBlockValue(block) {
     return Number(block.childNodes[0].innerHTML);
 }
@@ -14,20 +15,12 @@ async function MergeSort() {
         const isColorChange = i % 3 !== 2;
         if (isColorChange) {
             const [barOneIdx, barTwoIdx] = animations[i];
-            const color = i % 3 === 0 ? '#6b5b95' : '#FF4949';
-
+            const color = i % 3 === 0 ? primaryColor : secondaryColor;
+            await addDelay(10);
             auxilaryBlock[barOneIdx].style.backgroundColor = color;
             auxilaryBlock[barTwoIdx].style.backgroundColor = color;
-            await addDelay();
         } else {
-
-
             const [barOneIdx, barTwo] = animations[i];
-
-            const color = 'yellow';
-            auxilaryBlock[barOneIdx].style.backgroundColor = color;
-            barTwo.style.backgroundColor = color;
-            await addDelay();
             await swap(auxilaryBlock[barOneIdx], barTwo);
         }
     }

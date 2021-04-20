@@ -1,9 +1,10 @@
 // Asynchronous Heapify function
 async function maxHeapify(n, i) {
-    var blocks = document.querySelectorAll(".block");
-    var largest = i; // Initialize largest as root
-    var left = 2 * i + 1; // left = 2*i + 1
-    var right = 2 * i + 2; // right = 2*i + 2
+    const blocks = document.querySelectorAll(".block");
+    let largest = i; // Initialize largest as root
+    let left = 2 * i + 1; // left = 2*i + 1
+    let right = 2 * i + 2; // right = 2*i + 2
+
 
     // If left child is larger than root
     if (
@@ -23,24 +24,16 @@ async function maxHeapify(n, i) {
 
     // If largest is not root
     if (largest != i) {
-        blocks[i].style.backgroundColor = '#FF4949';
-        blocks[largest].style.backgroundColor = '#FF4949';
-        var tempHeight = blocks[i].style.height;
-        var tempInnerText = blocks[i].childNodes[0].innerText;
-        blocks[i].style.height = blocks[largest].style.height;
-        blocks[largest].style.height = tempHeight;
-        blocks[i].childNodes[0].innerText = blocks[largest].childNodes[0].innerText;
-        blocks[largest].childNodes[0].innerText = tempInnerText;
+        setSecondaryBackgroundColor(blocks[i]);
+        setSecondaryBackgroundColor(blocks[largest]);
+
+        await swapAttributes(blocks[i], blocks[largest]);
+
+        await addDelay(300);
 
 
-
-        await new Promise((resolve) =>
-            setTimeout(() => {
-                resolve();
-            }, timeout)
-        );
-        blocks[i].style.backgroundColor = '#6b5b95';
-        blocks[largest].style.backgroundColor = '#6b5b95';
+        setDefaultBackgroundColor(blocks[i]);
+        setDefaultBackgroundColor(blocks[largest]);
 
         // Recursively Hapify the affected sub-tree
         await maxHeapify(n, largest);
@@ -60,24 +53,14 @@ async function HeapSort() {
     for (var i = n - 1; i > 0; i--) {
 
         // Move current root to end
-        var temp1 = blocks[i].style.height;
-        var temp2 = blocks[i].childNodes[0].innerText;
-        blocks[i].style.height = blocks[0].style.height;
-        blocks[0].style.height = temp1;
-        blocks[i].childNodes[0].innerText = blocks[0].childNodes[0].innerText;
-        blocks[0].childNodes[0].innerText = temp2;
-        blocks[i].style.backgroundColor = '#13CE66';
-        // blocks[j].style.backgroundColor = '#FF4949';
-        // blocks[j + 1].style.backgroundColor = '#FF4949';
+        await swapAttributes(blocks[i], blocks[0]);
 
-        await new Promise((resolve) =>
-            setTimeout(() => {
-                resolve();
-            }, timeout)
-        );
+        setPassedBackgroundColor(blocks[i]);
 
         // Call max Heapify on the reduced heap
         await maxHeapify(i, 0);
     }
-    blocks[0].style.backgroundColor = '#13CE66';
+
+    // Assuring every block is changed to passed color.
+    setPassedBackgroundColor(blocks[0]);
 }

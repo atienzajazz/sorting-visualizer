@@ -5,22 +5,27 @@ async function SelectionSort() {
         let lowestValue = Number(blocks[i].childNodes[0].innerHTML);
 
         for (let j = i + 1; j < blocks.length; j++) {
-            blocks[j].style.backgroundColor = '#FF4949';
+
+            setSecondaryBackgroundColor(blocks[j]);
             const currentBlockValue = Number(blocks[j].childNodes[0].innerHTML);
 
             // To compare value of the lowest and current block
             if (currentBlockValue < lowestValue) {
-                blocks[lowestIdx].style.backgroundColor = '#6b5b95';
+
+                // Change the color of the previous lowest block to default
+                // for a pleasing animation 
+                setDefaultBackgroundColor(blocks[lowestIdx]);
+
                 lowestIdx = j;
                 lowestValue = currentBlockValue;
-                blocks[lowestIdx].style.backgroundColor = '#13CE66';
+
+                setPassedBackgroundColor(blocks[lowestIdx]);
             }
-            // blocks[j].style.backgroundColor = '#6b5b95';
 
             // To wait for .3 sec
             await addDelay();
             if (!(j == lowestIdx)) {
-                blocks[j].style.backgroundColor = '#6b5b95';
+                setDefaultBackgroundColor(blocks[j]);
             }
 
         }
@@ -29,9 +34,10 @@ async function SelectionSort() {
         await swap(blocks[lowestIdx], blocks[i]);
         blocks = document.querySelectorAll('.block');
 
-        // Return to normal
-        blocks[lowestIdx].style.backgroundColor = '#6b5b95';
-        blocks[i].style.backgroundColor = '#13CE66';
+        // 
+        setDefaultBackgroundColor(blocks[lowestIdx]);
+        setPassedBackgroundColor(blocks[i]);
+
 
     }
 

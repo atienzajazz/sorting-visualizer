@@ -7,10 +7,10 @@ async function BubbleSort() {
         for (let j = 0; j < blocks.length - i - 1; j += 1) {
             // To change background-color of the
             // blocks to be compared
-            blocks[j].style.backgroundColor = '#FF4949';
-            blocks[j + 1].style.backgroundColor = '#FF4949';
+            setSecondaryBackgroundColor(blocks[j]);
+            setSecondaryBackgroundColor(blocks[j + 1]);
 
-            // To wait for .1 sec
+
             await addDelay();
 
             const value1 = Number(blocks[j].childNodes[0].innerHTML);
@@ -22,13 +22,15 @@ async function BubbleSort() {
                 blocks = document.querySelectorAll('.block');
             }
 
-            // Changing the color to the previous one
-            blocks[j].style.backgroundColor = '#6b5b95';
-            blocks[j + 1].style.backgroundColor = '#6b5b95';
+            // Changing the color to default
+            setDefaultBackgroundColor(blocks[j]);
+            setDefaultBackgroundColor(blocks[j + 1]);
+
         }
 
         // changing the color of greatest element
         // found in the above traversal
-        blocks[blocks.length - i - 1].style.backgroundColor = '#13CE66';
+        setPassedBackgroundColor(blocks[blocks.length - i - 1]);
+
     }
 }

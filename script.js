@@ -2,12 +2,18 @@ const container = document.getElementById('array');
 const timeout = 300;
 const arraySize = 20;
 
+const primaryColor = '#6b5b95';
+const secondaryColor = '#FF4949';
+const temporaryColor = '#FF9696';
+const passedColor = '#13CE66';
 
 async function Sort() {
     const sortingCategory = document.getElementById('sorting-categories');
     const sortingButton = document.getElementById('sorting-button');
+
     sortingButton.disabled = true;
     sortingButton.classList.add('disabled');
+
     switch (sortingCategory.value) {
         case 'bubble-sort':
             await BubbleSort();
@@ -17,24 +23,51 @@ async function Sort() {
             break;
         case 'insertion-sort':
             await InsertionSort();
-            await addGreenBackgroundToBlocks();
+            await changeAllBackgroundToPassed();
             break;
         case 'heap-sort':
             await HeapSort();
             break;
         case 'quick-sort':
             await QuickSort();
-            addGreenBackgroundToBlocks();
+            changeAllBackgroundToPassed();
             break;
         case 'merge-sort':
             await MergeSort();
-            addGreenBackgroundToBlocks();
+            changeAllBackgroundToPassed();
             break;
         default:
             break;
     }
+
     sortingButton.disabled = false;
     sortingButton.classList.remove('disabled');
+}
+
+
+
+function setDefaultBackgroundColor(element) {
+    element.style.backgroundColor = primaryColor;
+}
+
+function setSecondaryBackgroundColor(element) {
+    element.style.backgroundColor = secondaryColor;
+}
+
+function setTemporaryBackgroundColor(element) {
+    element.style.backgroundColor = temporaryColor;
+}
+
+function setPassedBackgroundColor(element) {
+    element.style.backgroundColor = passedColor;
+}
+
+
+// For future Improvement if you want to over engineer
+function setBlockColor(color, ...elements) {
+    elements.forEach(element => {
+        element.style.backgroundColor = color;
+    });
 }
 
 
@@ -63,25 +96,25 @@ function swap(nodeA, nodeB) {
     });
 }
 
-// Used on Recursive Algorithms as it only changes its value,
+// Used Recursive Algorithms as it only changes its value,
 // rather than swap the nodes and encounter unexpected bugs.
 function swapAttributes(nodeA, nodeB) {
     return new Promise(resolve => {
-        var temp1 = nodeA.style.height;
-        var temp2 = nodeA.childNodes[0].innerText;
+        var tempHeight = nodeA.style.height;
+        var tempText = nodeA.childNodes[0].innerText;
         nodeA.style.height = nodeB.style.height;
-        nodeB.style.height = temp1;
+        nodeB.style.height = tempHeight;
         nodeA.childNodes[0].innerText = nodeB.childNodes[0].innerText;
-        nodeB.childNodes[0].innerText = temp2;
+        nodeB.childNodes[0].innerText = tempText;
         resolve();
     });
 }
 
-async function addGreenBackgroundToBlocks() {
+async function changeAllBackgroundToPassed() {
     let blocks = document.querySelectorAll('.block');
     for (let i = 0; i < blocks.length; i++) {
         await addDelay();
-        blocks[i].style.backgroundColor = '#13CE66';
+        setPassedBackgroundColor(blocks[i]);
     }
 }
 
@@ -92,8 +125,6 @@ function addDelay(delay = 100) {
         }, delay)
     );
 }
-
-
 
 // Function to generate the array of blocks
 function generatearray() {
@@ -124,8 +155,5 @@ function generatearray() {
     }
 
 }
-
-
-
 
 generatearray();

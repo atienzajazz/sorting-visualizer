@@ -7,8 +7,9 @@ async function InsertionSort() {
         for (let j = 0; j < i; j++) {
             // To change background-color of the
             // blocks to be compared
-            blocks[j].style.backgroundColor = '#FF4949';
-            blocks[i].style.backgroundColor = '#FF4949';
+
+            setSecondaryBackgroundColor(blocks[j]);
+            setSecondaryBackgroundColor(blocks[j + 1]);
 
             // To wait for .1 sec
             await addDelay();
@@ -22,9 +23,9 @@ async function InsertionSort() {
                 blocks = document.querySelectorAll('.block');
             }
 
-            // Changing the color to the previous one
-            blocks[j].style.backgroundColor = '#6b5b95';
-            blocks[i].style.backgroundColor = '#6b5b95';
+            // Changing the color to default
+            setDefaultBackgroundColor(blocks[j]);
+            setDefaultBackgroundColor(blocks[i]);
         }
 
     }
