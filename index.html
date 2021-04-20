@@ -12,7 +12,7 @@
         <img src="./images/logo.png" alt="Sorting Visualizer Logo">
         <div class="header-name">Sorting Visualizer</div>
     </header>
-    <nav class="main-nav">
+    <nav class="sorting-nav">
         <button onclick="generatearray()">
             Generate Array
         </button>
@@ -23,18 +23,26 @@
             <div class="select">
                 <select name="sorting-categories" id="sorting-categories">
                     <option value="bubble-sort" selected="selected">Bubble Sort</option>
-                    <option value="heap-sort">Heap Sort</option>
-                    <option value="insertion-sort">Insertion Sort</option>
-                    <option value="merge-sort">Merge Sort</option>
                     <option value="selection-sort">Selection Sort</option>
+                    <option value="insertion-sort">Insertion Sort</option>
+                    <option value="heap-sort">Heap Sort</option>
+                    <option value="quick-sort">Quick Sort</option>
+                    <option value="merge-sort">Merge Sort</option>
                 </select>
             </div>
         </div>
     </nav>
     <main>
+
         <div id="array" />
     </main>
     <script src="script.js"></script>
+    <script src="sorting-algorithms/bubbleSort.js"></script>
+    <script src="sorting-algorithms/selectionSort.js"></script>
+    <script src="sorting-algorithms/insertionSort.js"></script>
+    <script src="sorting-algorithms/heapSort.js"></script>
+    <script src="sorting-algorithms/quickSort.js"></script>
+    <script src="sorting-algorithms/mergeSort.js"></script>
 </body>
 <!-- https://www.geeksforgeeks.org/bubble-sort-visualization-using-javascript/ -->
 

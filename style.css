@@ -33,7 +33,7 @@ html {
   width: 2.5em;
 }
 
-.main-nav {
+.sorting-nav {
   margin-top: 1em;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@ html {
   gap: 1em;
 }
 
-.main-nav button {
+.sorting-nav button {
   background: #6e6d6f;
   border-radius: 0.25em;
   padding: 0.5em 2em;
@@ -53,6 +53,8 @@ html {
 
 .disabled {
   cursor: not-allowed !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
 }
 
 select {
@@ -81,6 +83,17 @@ select {
   cursor: pointer;
   line-height: 1.1;
   background-color: #6e6d6f;
+}
+
+@media screen and (max-width: 480px) {
+  .sorting-nav {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .header-container {
+    padding-left: 1em;
+    width: 650px;
+  }
 }
 
 /* CSS for Sorting */
