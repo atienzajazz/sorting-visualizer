@@ -10,9 +10,10 @@ const passedColor = '#13CE66';
 async function Sort() {
     const sortingCategory = document.getElementById('sorting-categories');
     const sortingButton = document.getElementById('sorting-button');
+    const generateArrayButton = document.getElementById('generate-array-button');
 
     sortingButton.disabled = true;
-    sortingButton.classList.add('disabled');
+    generateArrayButton.disabled = true;
 
     switch (sortingCategory.value) {
         case 'bubble-sort':
@@ -41,7 +42,7 @@ async function Sort() {
     }
 
     sortingButton.disabled = false;
-    sortingButton.classList.remove('disabled');
+    generateArrayButton.disabled = false;
 }
 
 
@@ -140,8 +141,9 @@ function generatearray() {
         arrayElement.classList.add('block');
 
         // Adding style to div
-        arrayElement.style.height = `${value * 3}px`;
-        arrayElement.style.transform = `translate(${i * 30}px)`;
+        arrayElement.style.height = `calc(${value} * var(--array-height))`;
+        arrayElement.style.transform = `translate(calc(${i} * var(--array-transform)))`;
+
 
         // Creating label element for displaying
         // size of particular block

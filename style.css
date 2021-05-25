@@ -5,9 +5,10 @@ html {
   margin: 0;
   font-family: "Poppins", arial;
   background-color: #2f303a;
-  --select-border: #777;
-  --select-focus: blue;
-  --select-arrow: var(--select-border);
+  --base-height: 0.2em;
+  --base-transform: 1.9em;
+  --array-height: 3px;
+  --array-transform: 30px;
 }
 
 *,
@@ -20,17 +21,54 @@ html {
 .header-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-around;
   font-size: 1.1em;
   color: #ffffff;
-  padding-top: 1em;
-  padding-left: 10em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   background: #1f1b24;
 }
 
-.header-container img {
-  width: 2.5em;
+.header-title {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.sorting-logo {
+  width: 2em;
+}
+
+.github-logo {
+  width: 1.5em;
+}
+
+select {
+  /* appearance: none; */
+  background-color: #6e6d6f;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: 5em;
+  z-index: 1;
+  color: white;
+  outline: none;
+}
+
+.select {
+  align-items: center;
+  margin: 0;
+  border-radius: 0.25em;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #6e6d6f;
 }
 
 .sorting-nav {
@@ -49,57 +87,75 @@ html {
   border: none;
   font: inherit;
   cursor: pointer;
+  box-shadow: 1px 3px 2px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
 }
 
-.disabled {
+button:hover:enabled {
+  color: #ff4949 !important;
+  font-weight: 700 !important;
+  border-radius: 0.5em;
+  /* border: #ff4949 solid; */
+  letter-spacing: 3px;
+  background: none;
+  /* transition: all 0.3s ease 0s; */
+  box-shadow: 1px 3px 2px rgba(118, 115, 115, 0.25);
+}
+
+button:disabled {
   cursor: not-allowed !important;
   background-color: #cccccc !important;
   color: #666666 !important;
 }
 
-select {
-  /* appearance: none; */
-  background-color: #6e6d6f;
-  border: none;
-  padding: 0 1em 0 0;
-  margin: 0;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: 5em;
-  z-index: 1;
-  color: white;
-  outline: none;
+.sorting-cta {
+  margin: unset;
+  display: flex;
+  gap: 1em;
+}
+.sorting-categories-parent {
+  margin: unset;
 }
 
-.select {
-  align-items: center;
-  /* position: relative; */
-  margin: 0;
-  border-radius: 0.25em;
-  padding: 0.5em 1em;
-  font-size: 1rem;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: #6e6d6f;
-}
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 660px) {
+  .sorting-cta button {
+    width: 50%;
+    font-size: 0.9em;
+  }
   .sorting-nav {
     flex-direction: column;
-    gap: 2px;
-  }
-  .header-container {
+    gap: 1em;
+    align-items: stretch;
     padding-left: 1em;
-    width: 650px;
+    padding-right: 1em;
+  }
+
+  /* CSS for Sorting */
+  #array {
+    height: 350px !important;
+    width: 80vw !important;
+    --array-transform: calc(80vw / 20);
+  }
+  main {
+    width: 90vw !important;
+  }
+
+  .block {
+    width: calc(72vw / 20) !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .block_id {
+    visibility: hidden;
   }
 }
 
 /* CSS for Sorting */
 #array {
   height: 413px;
-  width: 598px;
+  width: 600px;
   margin: auto;
   position: relative;
   margin-top: 20px;
@@ -109,7 +165,7 @@ select {
 main {
   border-radius: 10px;
   background-color: #d5d5d5;
-  width: 650px;
+  width: 660px;
   position: relative;
   margin: auto;
 }

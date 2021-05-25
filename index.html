@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Sorting Visualizer</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="header-container">
-        <img src="./images/logo.png" alt="Sorting Visualizer Logo">
+      <div class="header-title">
+        <img
+          src="./images/logo.png"
+          alt="Sorting Visualizer Logo"
+          class="sorting-logo"
+        />
         <div class="header-name">Sorting Visualizer</div>
+      </div>
+      <div class="header-left">
+        <a
+          href="https://github.com/jazzilll/sorting-visualizer"
+          target="_blank"
+        >
+          <img
+            src="./images/github-120px.png"
+            alt="Github Logo"
+            class="github-logo"
+        /></a>
+      </div>
     </header>
     <nav class="sorting-nav">
-        <button onclick="generatearray()">
-            Generate Array
-        </button>
-        <button onclick="Sort()" id="sorting-button">
-            Sort
-        </button>
-        <div class="sorting-categories-parent">
-            <div class="select">
-                <select name="sorting-categories" id="sorting-categories">
-                    <option value="bubble-sort" selected="selected">Bubble Sort</option>
-                    <option value="selection-sort">Selection Sort</option>
-                    <option value="insertion-sort">Insertion Sort</option>
-                    <option value="heap-sort">Heap Sort</option>
-                    <option value="quick-sort">Quick Sort</option>
-                    <option value="merge-sort">Merge Sort</option>
-                </select>
-            </div>
+      <div class="sorting-cta">
+        <button onclick="generatearray()" id="generate-array-button">Generate Array</button>
+        <button onclick="Sort()" id="sorting-button">Sort</button>
+      </div>
+
+      <div class="sorting-categories-parent">
+        <div class="select">
+          <select name="sorting-categories" id="sorting-categories">
+            <option value="bubble-sort" selected="selected">Bubble Sort</option>
+            <option value="selection-sort">Selection Sort</option>
+            <option value="insertion-sort">Insertion Sort</option>
+            <option value="heap-sort">Heap Sort</option>
+            <option value="quick-sort">Quick Sort</option>
+            <option value="merge-sort">Merge Sort</option>
+          </select>
         </div>
+      </div>
     </nav>
     <main>
-
-        <div id="array" />
+      <div id="array" />
     </main>
     <script src="script.js"></script>
     <script src="sorting-algorithms/bubbleSort.js"></script>
@@ -44,7 +58,6 @@
     <script src="sorting-algorithms/heapSort.js"></script>
     <script src="sorting-algorithms/quickSort.js"></script>
     <script src="sorting-algorithms/mergeSort.js"></script>
-</body>
-<!-- https://www.geeksforgeeks.org/bubble-sort-visualization-using-javascript/ -->
-
+  </body>
+  <!-- https://www.geeksforgeeks.org/bubble-sort-visualization-using-javascript/ -->
 </html>
