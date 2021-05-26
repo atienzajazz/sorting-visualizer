@@ -7,8 +7,8 @@ html {
   background-color: #2f303a;
   --base-height: 0.2em;
   --base-transform: 1.9em;
-  --array-height: 3px;
-  --array-transform: 30px;
+  --array-height: 0.5vh;
+  --array-transform: calc(80vw / 20);
 }
 
 *,
@@ -21,10 +21,11 @@ html {
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  font-size: 1.1em;
+  justify-content: space-between;
   color: #ffffff;
   padding-top: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
   padding-bottom: 0.5em;
   background: #1f1b24;
 }
@@ -44,13 +45,11 @@ html {
 }
 
 select {
-  /* appearance: none; */
   background-color: #6e6d6f;
   border: none;
   padding: 0 1em 0 0;
   margin: 0;
   width: 100%;
-  text-align: center;
   font-family: inherit;
   font-size: inherit;
   cursor: inherit;
@@ -72,34 +71,47 @@ select {
 }
 
 .sorting-nav {
-  margin-top: 1em;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   gap: 1em;
+  align-items: stretch;
+  margin-top: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
+.sorting-cta {
+  margin: unset;
+  display: flex;
+  gap: 1em;
+}
+.sorting-categories-container {
+  margin: unset;
+}
+
+/* Button Styles */
 .sorting-nav button {
   background: #6e6d6f;
   border-radius: 0.25em;
-  padding: 0.5em 2em;
+  padding: 0.5em;
   color: white;
   border: none;
-  font: inherit;
   cursor: pointer;
   box-shadow: 1px 3px 2px rgba(0, 0, 0, 0.25);
   transition: all 0.5s ease 0s;
   cursor: pointer;
+  width: 50%;
+  font: inherit;
+  font-size: 0.9em;
 }
 
 button:hover:enabled {
   color: #ff4949 !important;
   font-weight: 700 !important;
   border-radius: 0.5em;
-  /* border: #ff4949 solid; */
   letter-spacing: 3px;
   background: none;
-  /* transition: all 0.3s ease 0s; */
+  transition: all 0.3s ease 0s;
   box-shadow: 1px 3px 2px rgba(118, 115, 115, 0.25);
 }
 
@@ -108,74 +120,32 @@ button:disabled {
   background-color: #cccccc !important;
   color: #666666 !important;
 }
+/* End Button Styles */
 
-.sorting-cta {
-  margin: unset;
-  display: flex;
-  gap: 1em;
-}
-.sorting-categories-parent {
-  margin: unset;
-}
-
-@media screen and (max-width: 660px) {
-  .sorting-cta button {
-    width: 50%;
-    font-size: 0.9em;
-  }
-  .sorting-nav {
-    flex-direction: column;
-    gap: 1em;
-    align-items: stretch;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
-  /* CSS for Sorting */
-  #array {
-    height: 350px !important;
-    width: 80vw !important;
-    --array-transform: calc(80vw / 20);
-  }
-  main {
-    width: 90vw !important;
-  }
-
-  .block {
-    width: calc(72vw / 20) !important;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .block_id {
-    visibility: hidden;
-  }
-}
-
-/* CSS for Sorting */
+/* Sorting Styles */
 #array {
-  height: 413px;
-  width: 600px;
+  height: 64vh;
+  width: 80vw;
   margin: auto;
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 0.8em;
 }
 
 main {
-  border-radius: 10px;
+  width: 90vw;
+  border-radius: .8em;
   background-color: #d5d5d5;
-  width: 660px;
   position: relative;
   margin: auto;
 }
 
 .block {
-  width: 28px;
+  width: calc(72vw / 20);
   background-color: #6b5b95;
   position: absolute;
   bottom: 0px;
-  border-radius: 5px;
+  border-radius: .3em;
   transition: 0.3s all ease;
 }
 
@@ -185,4 +155,64 @@ main {
   margin-top: -20px;
   width: 100%;
   text-align: center;
+  visibility: hidden;
+}
+/* Sorting Styles End */
+
+@media screen and (min-width: 500px) {
+  .block_id {
+    visibility: visible;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .sorting-nav {
+    margin-top: 0.5em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+  }
+  .sorting-cta button {
+    font-size: 1em;
+    width: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  /* Sorting Styles */
+  #array {
+    --array-transform: calc(60vw / 20);
+    width: 60vw;
+  }
+
+  main {
+    width: 66vw;
+  }
+  .block {
+    width: calc(54vw / 20);
+  }
+  /* Sorting Styles End*/
+}
+
+@media screen and (min-width: 980px) {
+  /* Sorting Styles */
+  #array {
+    --array-transform: calc(50vw / 20);
+    width: 50vw;
+  }
+
+  main {
+    width: 54vw;
+  }
+  .block {
+    width: calc(46vw / 20);
+  }
+  /* Sorting Styles End*/
+
+  .header-container {
+    justify-content: space-around;
+  }
 }
